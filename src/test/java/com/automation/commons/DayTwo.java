@@ -15,7 +15,8 @@ public class DayTwo extends DayOne{
 
     @Before
     public void setUp(){
-        createDriver();
+
+        createDriver("http.saucedemo.com/");
     }
     @Test
     public void login() throws InterruptedException {
@@ -35,14 +36,22 @@ public class DayTwo extends DayOne{
 
 
         // now we are on the product page
-        WebElement productButton = driver.findElement(By.className("title"));
+        WebElement productsPageTitle = driver.findElement(By.className("title"));
 
-        Assert.assertTrue("Not on product page", productButton.isDisplayed());
+        System.out.println(productsPageTitle.getText());
+
+        Assert.assertTrue("Not on product page", productsPageTitle.isDisplayed());
 
         List<WebElement> inventoryItemDescriptions = driver.findElements(By.className("inventory_item_desc"));
+        List<WebElement> inventoryItemTitles = driver.findElements(By.className("inventory_item_name")) ;
 
-        for (WebElement webElement : inventoryItemDescriptions){
-            System.out.println(webElement.getText());
+       // for (WebElement webElement : inventoryItemDescriptions){
+
+        for(int i = 0; i < inventoryItemDescriptions.size();i++){
+            System.out.println(inventoryItemTitles.get(i).getText());
+            System.out.println(inventoryItemDescriptions.get(i).getText());
+
+           // System.out.println(webElement.getText());
             System.out.println("==========================");
         }
 
