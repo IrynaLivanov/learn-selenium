@@ -29,8 +29,10 @@ public class AdvancedMouseInteraction  extends CommonMethods{
 
         actions.doubleClick(doubleClickBtn).build().perform();
 
+        //In this case we are performing the same double click but we are using the .moveToElement() method to first
+        //move the "mouse" to the element and then perform the double click
 
-        //action.moveToElement(doubleClickBtn).doubleClick().build().perform();
+        actions.moveToElement(doubleClickBtn).doubleClick().build().perform();
         Thread.sleep(3000);
 
 
@@ -40,15 +42,18 @@ public class AdvancedMouseInteraction  extends CommonMethods{
         Thread.sleep(3000);
 
         driver.navigate().to("http://the-internet.herokuapp.com/hovers");
-        WebElement hoverIcon = driver.findElement(By.xpath("//div[@class='figure'][1]"));
+        Thread.sleep(1000);
 
+        WebElement hoverIcon = driver.findElement(By.xpath("//div[@class='figure'][1]"));
+       //Here we are using the .moveToElement() method to essentially hover over a specific element
         actions.moveToElement(hoverIcon).build().perform();
         Thread.sleep(3000);
 
 
+
+
         WebElement viewProfileLink = driver.findElement(By.xpath("//div[@class='figure'][1]//a"));
         actions.keyDown(Keys.COMMAND).click(viewProfileLink).keyUp(Keys.COMMAND).build().perform();
-
         Thread.sleep(3000);
 
 

@@ -17,8 +17,12 @@ public class BrowserSynchronization extends DriverUtils {
  @Test
  public void learnWaits() {
      WebDriver driver = getDriver();
+
+     //Creating an object of WebDriverWait class and passing the driver (to access current driver session) and
+     //the duration of seconds we want to wait for the expected condition to be true
      WebDriverWait driverWait = new WebDriverWait(driver,Duration.ofSeconds(30));
-       //We can find this element by:
+
+     //We can find this element by:
        //xpath //button[@id='startStopButton']
        //Id startStopButton
        //Css #startStopButton
@@ -27,7 +31,7 @@ public class BrowserSynchronization extends DriverUtils {
 
       //xpath //div[@role='progressbar']
        //Css #progressBar div.progress-bar
- WebElement progressBar = driver.findElement(By.cssSelector("##progressBar div.progress-bar   "));
+ WebElement progressBar = driver.findElement(By.cssSelector("#progressBar div.progress-bar   "));
 
      startButton.click();
      String expectedValue = "100%" ;
